@@ -1,0 +1,781 @@
+openapi: 3.0.0
+info:
+  title: API Ketahanan Pangan
+  description: Pembuatan API Ketahanan Pangan dalam rangka memenuhi keperluan Projek
+    UAS mata kuliah Pembangunan Perangkat Lunak Berorientasi Service tahun 2023.
+  version: "1.0"
+servers:
+- url: http://localhost:3000
+paths:
+  /users:
+    get:
+      tags: []
+      summary: Your GET endpoint
+      description: Get list of users
+      operationId: get-users
+      responses:
+        "200":
+          description: List of users retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pengguna'
+                x-content-type: application/json
+      x-swagger-router-controller: Default
+    post:
+      summary: ""
+      description: Create new users data
+      operationId: post-users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pengguna'
+      responses:
+        "201":
+          description: New users data created successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+  /users/{userId}:
+    get:
+      tags: []
+      summary: Your GET endpoint
+      description: Get a user by ID
+      operationId: get-users-userId
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Users retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pengguna'
+        "404":
+          description: Not Found
+      x-swagger-router-controller: Default
+    put:
+      summary: ""
+      description: Update a user by ID
+      operationId: put-users-userId
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pengguna'
+      responses:
+        "200":
+          description: Users updated successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+    delete:
+      summary: ""
+      description: Delete a user
+      operationId: delete-users-userId
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: A user deleted successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+  /komoditas:
+    get:
+      tags: []
+      summary: Your GET endpoint
+      description: Get list of komoditas
+      operationId: get-komoditas
+      responses:
+        "200":
+          description: List of komoditas retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Komoditas'
+                x-content-type: application/json
+      x-swagger-router-controller: Default
+    post:
+      summary: ""
+      description: Create komoditas (s)
+      operationId: post-komoditas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Komoditas'
+      responses:
+        "201":
+          description: New komoditas data created successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+  /komoditas/{komoditas_id}:
+    get:
+      tags: []
+      summary: Your GET endpoint
+      description: Get komoditas by ID
+      operationId: get-komoditas-komoditas_id
+      parameters:
+      - name: komoditas_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: A komoditas retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Komoditas'
+        "404":
+          description: Not Found
+      x-swagger-router-controller: Default
+    put:
+      summary: ""
+      description: Update a komoditas by ID
+      operationId: put-komoditas-komoditas_id
+      parameters:
+      - name: komoditas_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Komoditas'
+      responses:
+        "200":
+          description: A komoditas updated successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+    delete:
+      summary: ""
+      description: Delete a komoditas
+      operationId: delete-komoditas-komoditas_id
+      parameters:
+      - name: komoditas_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: A komoditas deleted successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+  /komoditas/pemesanan:
+    get:
+      tags: []
+      summary: Your GET endpoint
+      description: Get list of pemesanan
+      operationId: get-komoditas-pemesanan
+      responses:
+        "200":
+          description: List of pemesanan retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pemesanan'
+                x-content-type: application/json
+      x-swagger-router-controller: Default
+    post:
+      summary: ""
+      description: Create pemesanan (s)
+      operationId: post-komoditas-pemesanan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pemesanan'
+      responses:
+        "201":
+          description: New pemesanan data created successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+  /komoditas/pemesanan/{order_id}:
+    get:
+      tags: []
+      summary: Your GET endpoint
+      description: Get pemesanan by ID
+      operationId: get-komoditas-pemesanan-order_id
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: A pemesanan data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pemesanan'
+        "404":
+          description: Not Found
+      x-swagger-router-controller: Default
+    put:
+      summary: ""
+      description: Update a pemesanan by ID
+      operationId: put-komoditas-pemesanan-order_id
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pemesanan'
+      responses:
+        "200":
+          description: A pemesanan updated successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+    delete:
+      summary: ""
+      description: Delete a pemesanan
+      operationId: delete-komoditas-pemesanan-order_id
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: A pemesanan deleted successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+  /komoditas/pengemasan:
+    get:
+      tags: []
+      summary: Your GET endpoint
+      description: Get list of pengemasan
+      operationId: get-komoditas-pengemasan
+      responses:
+        "200":
+          description: List of pengemasan retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pengemasan'
+                x-content-type: application/json
+      x-swagger-router-controller: Default
+    post:
+      summary: ""
+      description: Create pengemasan (s)
+      operationId: post-komoditas-pengemasan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pengemasan'
+      responses:
+        "201":
+          description: New pengemasan data created successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+  /komoditas/pengemasan/{order_id}:
+    get:
+      tags: []
+      summary: Your GET endpoint
+      description: Get pengemasan by ID
+      operationId: get-komoditas-pengemasan-order_id
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: A pengemasan data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pengemasan'
+        "404":
+          description: Not Found
+      x-swagger-router-controller: Default
+    put:
+      summary: ""
+      description: Update a pengemasan by ID
+      operationId: put-komoditas-pengemasan-order_id
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pengemasan'
+      responses:
+        "200":
+          description: A pengemasan updated successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+    delete:
+      summary: ""
+      description: Delete a pengemasan
+      operationId: delete-komoditas-pengemasan-order_id
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: A pengemasan deleted successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+  /komoditas/pengiriman:
+    get:
+      tags: []
+      summary: Your GET endpoint
+      description: Get list of pengiriman
+      operationId: get-komoditas-pengiriman
+      responses:
+        "200":
+          description: List of pengiriman retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pengiriman'
+                x-content-type: application/json
+      x-swagger-router-controller: Default
+    post:
+      summary: ""
+      description: Create pengiriman (s)
+      operationId: post-komoditas-pengiriman
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pengiriman'
+      responses:
+        "201":
+          description: New pengiriman data created successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+  /komoditas/pengiriman/{order_id}:
+    get:
+      tags: []
+      summary: Your GET endpoint
+      description: Get pengiriman by ID
+      operationId: get-komoditas-pengiriman-order_id
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: A pengiriman data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pengiriman'
+        "404":
+          description: Not Found
+      x-swagger-router-controller: Default
+    put:
+      summary: ""
+      description: Update a pengiriman by ID
+      operationId: put-komoditas-pengiriman-order_id
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pengiriman'
+      responses:
+        "200":
+          description: A pengiriman updated successfully
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+    delete:
+      summary: ""
+      description: Delete a pengiriman
+      operationId: delete-komoditas-pengiriman-order_id
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: A pengiriman deleted successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+  /komoditas/pembuangan:
+    get:
+      tags: []
+      summary: Your GET endpoint
+      description: Get list of pembuangan
+      operationId: get-komoditas-pembuangan
+      responses:
+        "200":
+          description: List of pembuangan retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pembuangan'
+                x-content-type: application/json
+      x-swagger-router-controller: Default
+    post:
+      summary: ""
+      description: Create pembuangan (s)
+      operationId: post-komoditas-pembuangan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pembuangan'
+      responses:
+        "201":
+          description: New pembuangan data created successfully
+        "401":
+          description: Unauthorized
+      security:
+      - basicAuth: []
+      x-swagger-router-controller: Default
+  /komoditas/pembuangan/{order_id}:
+    get:
+      tags: []
+      summary: Your GET endpoint
+      description: Get a pembuangan by ID
+      operationId: get-komoditas-pembuangan-order_id
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: A pembuangan data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pembuangan'
+        "404":
+          description: Not Found
+      x-swagger-router-controller: Default
+components:
+  schemas:
+    Komoditas:
+      title: ""
+      type: object
+      properties:
+        komoditas_id:
+          type: integer
+        nama:
+          type: string
+        kategori:
+          type: string
+        deskripsi:
+          type: string
+        gudang_komoditas:
+          $ref: '#/components/schemas/GudangKomoditas'
+        stok:
+          type: integer
+        nilai_pasar:
+          type: integer
+      example:
+        komoditas_id: 0
+        nama: nama
+        kategori: kategori
+        gudang_komoditas:
+          Kategori: Kategori
+          Lokasi: Lokasi
+          gudang_id: 6
+          Nama: Nama
+        nilai_pasar: 5
+        deskripsi: deskripsi
+        stok: 1
+    GudangKomoditas:
+      type: object
+      properties:
+        gudang_id:
+          type: integer
+        Nama:
+          type: string
+        Kategori:
+          type: string
+        Lokasi:
+          type: string
+      example:
+        Kategori: Kategori
+        Lokasi: Lokasi
+        gudang_id: 6
+        Nama: Nama
+    Pengguna:
+      title: User
+      required:
+      - email
+      - emailVerified
+      - firstName
+      - id
+      - lastName
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the given user.
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        dateOfBirth:
+          type: string
+          format: date
+          example: 1997-10-31
+        emailVerified:
+          type: boolean
+          description: Set to true if the user's email has been verified.
+        createDate:
+          type: string
+          description: The date that the user was created.
+          format: date
+      example:
+        firstName: firstName
+        lastName: lastName
+        emailVerified: true
+        dateOfBirth: 1997-10-31T00:00:00.000+00:00
+        id: 0
+        email: ""
+        createDate: 2000-01-23
+      x-examples:
+        Alice Smith:
+          id: 142
+          firstName: Alice
+          lastName: Smith
+          email: alice.smith@gmail.com
+          dateOfBirth: 1997-10-31
+          emailVerified: true
+          signUpDate: 2019-08-24
+    Pemesanan:
+      type: object
+      properties:
+        order_id:
+          type: integer
+        nama_pemesan:
+          type: string
+        alamat_pemesan:
+          type: string
+        list_barang:
+          type: array
+          items:
+            type: integer
+        total_harga:
+          type: integer
+        status:
+          type: string
+      example:
+        list_barang:
+        - 6
+        - 6
+        alamat_pemesan: alamat_pemesan
+        nama_pemesan: nama_pemesan
+        total_harga: 1
+        order_id: 0
+        status: status
+    Pengemasan:
+      type: object
+      properties:
+        order_id:
+          type: integer
+        nama_pemesan:
+          type: string
+        alamat_pemesan:
+          type: string
+        list_barang:
+          type: array
+          items:
+            type: integer
+        status:
+          type: string
+      example:
+        list_barang:
+        - 6
+        - 6
+        alamat_pemesan: alamat_pemesan
+        nama_pemesan: nama_pemesan
+        order_id: 0
+        status: status
+    Pengiriman:
+      type: object
+      properties:
+        order_id:
+          type: integer
+        pengiriman_id:
+          type: integer
+        nama_pemesan:
+          type: string
+        alamat_pemesan:
+          type: string
+        list_barang:
+          type: array
+          items:
+            type: integer
+        status:
+          type: string
+      example:
+        list_barang:
+        - 1
+        - 1
+        alamat_pemesan: alamat_pemesan
+        pengiriman_id: 6
+        nama_pemesan: nama_pemesan
+        order_id: 0
+        status: status
+    Pembuangan:
+      type: object
+      properties:
+        id:
+          type: integer
+        list_barang:
+          type: array
+          items:
+            type: integer
+        alasan:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+      example:
+        list_barang:
+        - 6
+        - 6
+        id: 0
+        alasan:
+        - alasan
+        - alasan
+        status: status
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+x-stoplight:
+  id: pqiyad6b7dr4m
