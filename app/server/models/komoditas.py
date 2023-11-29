@@ -43,7 +43,7 @@ class UpdateKomoditasModel(BaseModel):
     nama: Optional[str] 
     kategori: Optional[str]
     deskripsi: Optional[str]
-    gudang_komoditas: dict
+    gudang_komoditas: Optional[dict]
     stok: Optional[int]
     nilai_pasar: Optional[int]
     '''

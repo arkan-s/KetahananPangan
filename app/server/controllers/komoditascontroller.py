@@ -11,9 +11,9 @@ async def retrieve_komoditass():
     return komoditass
 
 async def add_komoditas(komoditas_data: dict)->dict:
-    user = await komoditas_collection.insert_one(komoditas_data)
-    new_user = await komoditas_collection.find_one({"_id": user.inserted_id})
-    return komoditas_helper(new_user)
+    data = await komoditas_collection.insert_one(komoditas_data)
+    new_data = await komoditas_collection.find_one({"_id": data.inserted_id})
+    return komoditas_helper(new_data)
 
 async def retrieve_komoditas(id: int)->dict:
     komoditas = await komoditas_collection.find_one({"komoditas_id": id})
@@ -29,11 +29,11 @@ async def update_komoditas(id: int, data: dict):
             {"komoditas_id": id}, {"$set": data}
         )
         if updated_komoditas:
-            return retrieve_komoditas(id)
+            return await retrieve_komoditas(id)
         return {"Data": "Data not found"}
 
 async def delete_komoditas(id:int):
-    user = await komoditas_collection.find_one({"_id": ObjectId(id)})
-    if user:
-        await komoditas_collection.delete_one({"_id": ObjectId(id)})
+    data = await komoditas_collection.find_one({"komoditas_id": id})
+    if data:
+        await komoditas_collection.delete_one({"komoditas_id": id})
         return {"Data": "Data deleted"}

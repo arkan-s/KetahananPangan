@@ -29,3 +29,13 @@ def gudang_helper(gudang)->dict:
         "kategori": gudang["kategori"],
         "lokasi": gudang["lokasi"]
     }
+
+def pemesanan_helper(pemesanan)->dict:
+    return {
+        "order_id": pemesanan["order_id"],
+        "nama_pemesan": pemesanan["nama_pemesan"],
+        "alamat_pemesan": pemesanan["alamat_pemesan"],
+        "list_barang": pemesanan["list_barang"],
+        "total_harga": pemesanan["total_harga"],
+        "status": pemesanan["status"]
+    }

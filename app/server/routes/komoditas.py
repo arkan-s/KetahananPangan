@@ -34,14 +34,14 @@ async def update_a_komoditas(id:int, data: UpdateKomoditasModel = Body(...)):
     data_dict = data.dict(exclude_none=True)
     komoditas_ = jsonable_encoder(data_dict)
     new_data = await update_komoditas(id, komoditas_)
-    return  ResponseModel(new_data, "New Komoditas Data Updated")
+    return ResponseModel(new_data, "New Komoditas Data Updated")
 
 @komoditasAPI.delete("/{id}", response_description="Delete komoditas data from Database")
 async def remove_komoditas(id: int):
     deleted_komoditas = delete_komoditas(id)
     if deleted_komoditas:
         return ResponseModel(
-            "Komodoitas with ID: {} removed".format(id), "Komodoitas deleted successfully"
+            "Komoditas with ID: {} removed".format(id), "Komodotas deleted successfully"
         )
     return ErrorResponseModel(
         "An error occurred", 404, "Komodoitas with id {0} doesn't exist".format(id)
