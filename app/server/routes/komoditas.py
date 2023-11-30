@@ -38,7 +38,7 @@ async def update_a_komoditas(id:int, data: UpdateKomoditasModel = Body(...)):
 
 @komoditasAPI.delete("/{id}", response_description="Delete komoditas data from Database")
 async def remove_komoditas(id: int):
-    deleted_komoditas = delete_komoditas(id)
+    deleted_komoditas = await delete_komoditas(id)
     if deleted_komoditas:
         return ResponseModel(
             "Komoditas with ID: {} removed".format(id), "Komodotas deleted successfully"

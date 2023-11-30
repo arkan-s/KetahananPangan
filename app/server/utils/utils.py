@@ -39,3 +39,12 @@ def pemesanan_helper(pemesanan)->dict:
         "total_harga": pemesanan["total_harga"],
         "status": pemesanan["status"]
     }
+
+def pengemasan_helper(pemesanan)->dict:
+    return {
+        "order_id": pemesanan["order_id"],
+        "nama_pemesan": pemesanan["nama_pemesan"],
+        "alamat_pemesan": pemesanan["alamat_pemesan"],
+        "list_barang": pemesanan["list_barang"],
+        "status": pemesanan["status"]
+    }
