@@ -58,3 +58,11 @@ def pengiriman_helper(pengiriman)->dict:
         "list_barang": pengiriman["list_barang"],
         "status": pengiriman["status"]
     }
+
+def pembuangan_helper(pembuangan)->dict:
+    return {
+        "id": pembuangan["id"],
+        "list_barang": pembuangan["list_barang"],
+        "alasan": pembuangan["alasan"],
+        "status": pembuangan["status"]
+    }
