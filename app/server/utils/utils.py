@@ -40,11 +40,21 @@ def pemesanan_helper(pemesanan)->dict:
         "status": pemesanan["status"]
     }
 
-def pengemasan_helper(pemesanan)->dict:
+def pengemasan_helper(pengemasan)->dict:
     return {
-        "order_id": pemesanan["order_id"],
-        "nama_pemesan": pemesanan["nama_pemesan"],
-        "alamat_pemesan": pemesanan["alamat_pemesan"],
-        "list_barang": pemesanan["list_barang"],
-        "status": pemesanan["status"]
+        "order_id": pengemasan["order_id"],
+        "nama_pemesan": pengemasan["nama_pemesan"],
+        "alamat_pemesan": pengemasan["alamat_pemesan"],
+        "list_barang": pengemasan["list_barang"],
+        "status": pengemasan["status"]
+    }
+
+def pengiriman_helper(pengiriman)->dict:
+    return {
+        "order_id": pengiriman["order_id"],
+        "pengiriman_id": pengiriman["pengiriman_id"],
+        "nama_pemesan": pengiriman["nama_pemesan"],
+        "alamat_pemesan": pengiriman["alamat_pemesan"],
+        "list_barang": pengiriman["list_barang"],
+        "status": pengiriman["status"]
     }
